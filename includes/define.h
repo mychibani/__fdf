@@ -21,4 +21,8 @@
 #  define SCREEN_HEIGHT 1080
 # endif
 
+# ifndef _ERROR_
+#  define _ERROR_ -1
+# endif
+
 #endif

@@ -10,4 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FONCTIONS_H
+# define FONCTIONS_H
 
+void	ft_putnbr_fd(int n, int fd);
+
+#endif

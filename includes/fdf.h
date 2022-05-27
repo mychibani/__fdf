@@ -13,15 +13,13 @@
 #ifndef FDF
 # define FDF
 
-
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <mlx.h>
 # include "define.h"
-
-
-
+# include "structs.h"
+# include "fonctions.h"
 
 
 #endif
