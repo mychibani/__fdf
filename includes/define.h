@@ -13,7 +13,7 @@
 #ifdef DEFINE_H
 # define DEFINE_H
 
-# ifdef SCREEN_WIDTH
+# ifndef SCREEN_WIDTH
 #  define SCREEN_WIDTH 1920
 # endif
 
@@ -23,6 +23,10 @@
 
 # ifndef _ERROR_
 #  define _ERROR_ -1
+# endif
+
+# ifndef ONE
+#  define ONE
 # endif
 
 #endif

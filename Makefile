@@ -6,7 +6,7 @@
 #    By: ychibani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/05/26 10:09:55 by ychibani         ###   ########.fr        #
+#    Updated: 2022/06/02 15:04:33 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ SRCS_FILES		=	srcs/main.c
 
 
 HEADER_FILES		=	libft.h					\
+						struct.h 				\
+						fonctions.h				\
+						define.h				\
 
 NAME			=	fdf	
 
@@ -21,7 +24,7 @@ OBJS_FILES 		= 	${SRCS_FILES:.c=.o}
 
 DEPS_FILES		=	${SRCS_FILES:.c=.d}
 
-INCS			=	-I ./includes -I libft/includes/ -I /usr/include -I mlx
+INCS			=	-I ./includes -I libft/includes -I mlx
 
 LIBFT			=	libft/libft.a
 
@@ -64,22 +67,29 @@ all:			${NAME}
 				@${CC} ${CFLAGS} ${INCS} -MMD -c $< -o $@ ${INCS}
 
 ${NAME}:		${OBJS_FILES}
-				@echo "Compiling ${_GREEN}${_BOLD}libft${_END}..."
+				@echo "Compiling ${_GREEN}${_BOLD}libft and mlx${_END}..."
 				@${MAKE} -C libft >/dev/null
-				@echo "Compiling ${_CYAN}${_BOLD}minishell${_END}..."
+				@${MAKE} -C mlx >/dev/null
+				@echo "Compiling ${_CYAN}${_BOLD}fdf files${_END}..."
 				@${CC} ${CFLAGS} ${INCS} ${OBJS_FILES} -o ${NAME} ${MLX} ${LIBFT}
 
 clean:
-				@echo "Deleting ${_RED}${_BOLD}binary files${_END}..."
+				@echo "Deleting ${_RED}${_BOLD}binary files and mlx${_END}..."
 				@${RM} ${OBJS_FILES} ${DEPS_FILES}
 				@echo "Deleting ${_RED}${_BOLD}libft binary files${_END}..."
 				@${MAKE} -C libft fclean >/dev/null
+				@${MAKE} -C mlx clean >/dev/null
 
 fclean:			clean
-				@echo "Deleting ${_RED}${_BOLD}minishell${_END}..."
+				@echo "Deleting ${_RED}${_BOLD}fdf${_END}..."
 				@${RM} ${OBJS_FILES}
 
 re:				fclean all
+
+git :
+		git add .
+		git commit -m "$m"
+		git push -u origin master 
 
 -include ${DEPS_FILES}
 

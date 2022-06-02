@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
 typedef struct s_img
 {
@@ -21,7 +21,7 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 
-} t_img;
+}	t_img;
 
 typedef struct s_fdf
 {
@@ -30,5 +30,15 @@ typedef struct s_fdf
 	t_img	img;
 
 } t_fdf;
+
+typedef struct s_3dpoint
+{
+	int x;
+	int y;
+	int z;
+	int	color;
+
+} t_3dpoint;
+
 
 #endif

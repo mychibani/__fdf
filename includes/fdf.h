@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF
-# define FDF
+#ifndef FDF_H
+# define FDF_H
 
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <mlx.h>
-# include "define.h"
+# include "libft.h"
 # include "structs.h"
+# include "define.h"
 # include "fonctions.h"
-
 
 #endif
 
