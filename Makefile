@@ -89,7 +89,7 @@ re:				fclean all
 git :
 		git add .
 		git commit -m "$m"
-		git push -u origin master 
+		git push -f origin master 
 
 -include ${DEPS_FILES}
 
