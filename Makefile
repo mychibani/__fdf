@@ -30,7 +30,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra 
+CFLAGS			=  	-Wall -Werror -Wextra
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	

@@ -12,25 +12,25 @@
 
 #include "fdf.h"
 
-int 	__get_y_size(int fd)
-{
- 	char	*str;
-	int		y;
+// int 	__get_y_size(int fd)
+// {
+//  	char	*str;
+// 	int		y;
 
-	y = 0;
- 	str = __gnl(fd);
-	if (!str)
-		return (-1);
-	while (str)
-	{
-		if (str)
-			y++;
-		free(str);
-		str = __gnl(fd);
-	}
-	close(fd);
- 	return (free(str), y);
-}
+// 	y = 0;
+//  	str = __gnl(fd);
+// 	if (!str)
+// 		return (-1);
+// 	while (str)
+// 	{
+// 		if (str)
+// 			y++;
+// 		free(str);
+// 		str = __gnl(fd);
+// 	}
+// 	close(fd);
+//  	return (free(str), y);
+// }
 
 int		__get_x_size(char *str)
 {
@@ -76,13 +76,13 @@ int	is_equally_correct(int fd)
     line_size = __get_x_size(str);
 	if (line_size < 0)
 		return (free(str), -1);
-    // while (str)
-    // {
-    //     if (line_size > __get_x_size(str) && str)
-    //         return (free(str), -1);
-	// 	free(str);
-    //     str = __gnl(fd);
-    // }
+	while (str)
+    {
+		free(str);
+        if (line_size > __get_x_size(str) && str)
+            return (free(str), -1);
+        str = __gnl(fd);
+    }
 	return (free(str), 1);
 }
 
