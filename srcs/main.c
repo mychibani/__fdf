@@ -47,7 +47,7 @@ int		__get_x_size(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
-		if (str[i] == '-')
+		if (str[i] == '+' || str[i] == '-')
 			i++;
 		if (ft_isdigit(str[i]))
 		{
@@ -55,11 +55,16 @@ int		__get_x_size(char *str)
 			while (ft_isdigit(str[i]))
 				i++;
 		}
+		if (!str[i] || str[i] == '\n')
+			break ;
 		else
+		{
+			ft_printf("str[%d] = %c\n", i, str[i]);
 			return (_ERROR_);
+		}
 		i++;
 	}
-	return (free(str), x);
+	return (x);
 }
 
 int	is_equally_correct(int fd)
@@ -69,13 +74,16 @@ int	is_equally_correct(int fd)
 
     str = __gnl(fd);
     line_size = __get_x_size(str);
-    while (str)
-    {
-        str = __gnl(fd);
-        if (line_size < __get_x_size(str) && str)
-            return (-1);
-    }
-	return (1);
+	if (line_size < 0)
+		return (free(str), -1);
+    // while (str)
+    // {
+    //     if (line_size > __get_x_size(str) && str)
+    //         return (free(str), -1);
+	// 	free(str);
+    //     str = __gnl(fd);
+    // }
+	return (free(str), 1);
 }
 
 void	init_point(t_3dpoint *file_points, int x, int y, int z)
@@ -85,74 +93,75 @@ void	init_point(t_3dpoint *file_points, int x, int y, int z)
 	file_points->z = z;
 }
 
-t_3dpoint *init_3d_points(int fd, int *size)
-{
-	t_3dpoint	*file_points;
-	char		*str;
-	int			i;
-	int			max_len;
-	int			index;
-	int			x;
-	int			y;
+// t_3dpoint *init_3d_points(int fd, int *size)
+// {
+// 	t_3dpoint	*file_points;
+// 	char		*str;
+// 	int			i;
+// 	int			max_len;
+// 	int			index;
+// 	int			x;
+// 	int			y;
 
-	x = 0;
-	y = 0;
-	i = 0;
-	index = 0;
-	str = __gnl(fd);
-	max_len = __get_x_size(str);
-	*size = __get_x_size(str) * __get_y_size(fd);
-	file_points = (t_3dpoint *)malloc(sizeof(t_3dpoint) * (*size));
-	if (!file_points)
-		return (free(str), NULL);
-	while (str)
-	{
-		while (i < max_len)
-		{
-			while (str[i] == ' ')
-				i++;
-			init_point(&file_points[index++], x, y, ft_atoi(str + i));
-			while (ft_isdigit(str[i]))
-				i++;
-			i++;
-			x++;
-		}
-		free(str);
-		str = __gnl(fd);
-		x = 0;
-		y++;
-	}
-	return (free(str), file_points);
-}
+// 	x = 0;
+// 	y = 0;
+// 	i = 0;
+// 	index = 0;
+// 	str = __gnl(fd);
+// 	max_len = __get_x_size(str);
+// 	*size = __get_x_size(str) * __get_y_size(fd);
+// 	file_points = (t_3dpoint *)malloc(sizeof(t_3dpoint) * (*size));
+// 	if (!file_points)
+// 		return (free(str), NULL);
+// 	while (str)
+// 	{
+// 		while (i < max_len)
+// 		{
+// 			while (str[i] == ' ')
+// 				i++;
+// 			init_point(&file_points[index++], x, y, ft_atoi(str + i));
+// 			while (ft_isdigit(str[i]))
+// 				i++;
+// 			i++;
+// 			x++;
+// 		}
+// 		free(str);
+// 		str = __gnl(fd);
+// 		x = 0;
+// 		y++;
+// 	}
+// 	return (free(str), file_points);
+// }
 
-void	ft_print_3d_tab(t_3dpoint *tab, int len)
-{
-	int	i;
+// void	ft_print_3d_tab(t_3dpoint *tab, int len)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		ft_printf("x = [%d]\n", tab->x);
-		ft_printf("y = [%d]\n", tab->y);
-		ft_printf("z = [%d]\n", tab->z);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		ft_printf("x = [%d]\n", tab->x);
+// 		ft_printf("y = [%d]\n", tab->y);
+// 		ft_printf("z = [%d]\n", tab->z);
+// 		i++;
+// 	}
+// }
 
 int main(int ac, char **av)
 {
-	t_3dpoint *tab;
+	// t_3dpoint *tab;
 	(void)ac;
 	int fd;
-	int	size;
+	// int	size;
 
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (ft_putstr_fd("can't open file\n", 2), 2);
-	tab = init_3d_points(fd, &size);
-	ft_printf("%d\n", size);
-	ft_print_3d_tab(tab, size);
-	free(tab);
+	printf("size == %d\n", is_equally_correct(fd));
+	// tab = init_3d_points(fd, &size);
+	// ft_printf("%d\n", size);
+	// ft_print_3d_tab(tab, size);
+	// free(tab);
 	close(fd);
 }
 

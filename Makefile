@@ -18,7 +18,7 @@ HEADER_FILES		=	libft.h					\
 						fonctions.h				\
 						define.h				\
 
-NAME			=	fdf	
+NAME			=	fdf
 
 OBJS_FILES 		= 	${SRCS_FILES:.c=.o}
 
@@ -64,7 +64,7 @@ all:			${NAME}
 
 .c.o:
 				@echo "Compiling ${_YELLOW}${_BOLD}$<${_END}..."
-				@${CC} ${CFLAGS} ${INCS} -MMD -c $< -o $@ ${INCS}
+				@${CC} ${CFLAGS} -g ${INCS} -MMD -c $< -o $@ ${INCS}
 
 ${NAME}:		${OBJS_FILES}
 				@echo "Compiling ${_GREEN}${_BOLD}libft and mlx${_END}..."
@@ -89,7 +89,7 @@ re:				fclean all
 git :
 		git add .
 		git commit -m "$m"
-		git push -f origin master 
+		git push -u origin master 
 
 -include ${DEPS_FILES}
 
