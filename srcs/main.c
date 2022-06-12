@@ -12,6 +12,8 @@
 
 #include "fdf.h"
 
+void	wu_calc_line(int x0, int y0, int x1, int y1, t_fdf *fdf);
+
 int __get_y_size(int fd)
 {
 	char *str;
@@ -58,32 +60,7 @@ int __get_x_size(char *str)
 	return (x);
 }
 
-int is_equally_correct(int fd)
-{
-	int line_size;
-	int i;
-	char *str;
-
-	str = __gnl(fd);
-	line_size = __get_x_size(str);
-	if (line_size < 0)
-		return (free(str), -1);
-	free(str);
-	i = 0;
-	while (str)
-	{
-		str = __gnl(fd);
-		if (!str)
-			break;
-		if (line_size > __get_x_size(str) && str)
-			return (free(str), -1);
-		free(str);
-		i++;
-	}
-	return (free(str), 1);
-}
-
-t_3dpoint init_point(t_3dpoint file_points, int *x, int *y, int z)
+t_3d init_point(t_3d file_points, int *x, int *y, int z)
 {
 	file_points.x = *x;
 	file_points.y = *y;
@@ -91,9 +68,9 @@ t_3dpoint init_point(t_3dpoint file_points, int *x, int *y, int z)
 	return (file_points);
 }
 
-t_3dpoint *init_3d_points(int fd, int *size, char *av)
+t_3d *init_3d_points(int fd, int *size, char *av)
 {
-	t_3dpoint	*file_points;
+	t_3d		*file_points;
 	char		*str;
 	int			i;
 	int			x_len;
@@ -112,7 +89,7 @@ t_3dpoint *init_3d_points(int fd, int *size, char *av)
 	fd = open(av, O_RDONLY);
 	index = 0;
 	*size = x_len * y_len;
-	file_points = (t_3dpoint *)malloc(sizeof(t_3dpoint) * (*size));
+	file_points = (t_3d *)malloc(sizeof(t_3d) * (*size));
 	if (!file_points)
 		return (free(str), NULL);
 	while (y < y_len && str)
@@ -136,95 +113,75 @@ t_3dpoint *init_3d_points(int fd, int *size, char *av)
 	return (free(str), file_points);
 }
 
-void ft_print_3d_tab(t_3dpoint *tab, int len)
+void	__mlx_cleaner(t_fdf *fdf)
 {
-	int i;
-
-	i = 0;
-	while (i < len)
-	{
-		ft_printf("x = [%d]\t", tab[i].x);
-		ft_printf("y = [%d]\t", tab[i].y);
-		ft_printf("z = [%d]\n", tab[i].z);
-		ft_printf("-------------------\n");
-		
-		i++;
-	}
+	if (fdf->mlx)
+		free(fdf->mlx);
+	if (fdf->win)
+		free(fdf->win);
+	if (fdf->img.new_img)
+		free(fdf->img.new_img);
 }
 
-int main(int ac, char **av)
+void	__put_pixel_on_img(t_fdf *fdf, int x, int y, int color)
 {
-	t_3dpoint *tab;
-	(void)ac;
-	int fd;
-	int size;
+	char	*dst;
 
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		return (ft_putstr_fd("can't open file\n", 2), 2);
-	tab = init_3d_points(fd, &size, av[1]);
-	ft_print_3d_tab(tab, size);
-	free(tab);
-	close(fd);
+	dst = fdf->img.addr + (y * fdf->img.line_length + x * (fdf->img.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-// void	__mlx_cleaner(t_fdf *fdf)
-// {
-// 	if (fdf->mlx)
-// 		free(fdf->mlx);
-// 	if (fdf->win)
-// 		free(fdf->win);
-// 	if (fdf->img.new_img)
-// 		free(fdf->img.new_img);
-// }
 
-// void	__put_pixel_on_img(t_fdf *fdf, int x, int y, int color)
-// {
-// 	char	*dst;
 
-// 	dst = fdf->img.addr + (y * fdf->img.line_length + x * (fdf->img.bits_per_pixel / 8));
-// 	*(unsigned int *)dst = color;
-// }
+t_fdf *init(void)
+{
+	t_fdf *fdf;
 
-// t_fdf *init(void)
-// {
-// 	t_fdf *fdf;
+	fdf = (t_fdf *)malloc(sizeof(t_fdf));
+	if (!fdf)
+		return (NULL);
+	fdf->mlx = mlx_init();
+	fdf->win = mlx_new_window(fdf->mlx, 1920, 1080, "FDF");
+	if (!fdf->win)
+		return (__mlx_cleaner(fdf), NULL);
+	fdf->img.new_img = mlx_new_image(fdf->mlx, 1920, 1080);
+	if (!fdf->img.new_img)
+		return (__mlx_cleaner(fdf), NULL);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.new_img, &fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
+	if (!fdf->img.addr)
+		return (__mlx_cleaner(fdf), NULL);
+	return (fdf);
+}
 
-// 	fdf = (t_fdf *)malloc(sizeof(t_fdf));
-// 	if (!fdf)
-// 		return (NULL);
-// 	fdf->mlx = mlx_init();
-// 	fdf->win = mlx_new_window(fdf->mlx, 1920, 1080, "FDF");
-// 	if (!fdf->win)
-// 		return (__mlx_cleaner(fdf), NULL);
-// 	fdf->img.new_img = mlx_new_image(fdf->mlx, 1920, 1080);
-// 	if (!fdf->img.new_img)
-// 		return (__mlx_cleaner(fdf), NULL);
-// 	fdf->img.addr = mlx_get_data_addr(fdf->img.new_img, &fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
-// 	if (!fdf->img.addr)
-// 		return (__mlx_cleaner(fdf), NULL);
-// 	return (fdf);
-// }
+int	__close_window(void)
+{
+	exit(1);
+}
 
-// int	__close_window(void)
-// {
-// 	exit(ONE);
-// }
+__uint32_t	__colorful_pixel(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b << 0);
+}
 
-// int main(int ac, char **av)
-// {
-// 	t_fdf	*fdf;
+int main(void)
+{
+	t_fdf	*fdf;
+	// __uint32_t		color;
 
-// 	fdf = init();
-// 	// if (!parsing(ac, av))
-// 	// 	return (_ERROR_, 2);
-// 	// if (!fdf(fdf))
-// 	// 	return (_ERROR_, 2);
-// 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.new_img, 0, 0);
-// 	mlx_hook(fdf->win, 33, 1L << 17, __close_window, NULL);
-// 	mlx_loop(fdf->mlx);
-// 	__mlx_cleaner(fdf);
-// 	mlx_destroy_image(fdf->mlx, fdf->img.new_img);
-// 	mlx_destroy_window(fdf->mlx, fdf->win);
-// 	mlx_destroy_display(fdf->mlx);
-// }
+	// color = __colorful_pixel(-255, 0, 255, 255);
+	fdf = init();
+	// if (!parsing(ac, av))
+	// 	return (_ERROR_, 2);
+	// if (!fdf(fdf))
+	// 	return (_ERROR_, 2);
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.new_img, 0, 0);
+	
+	wu_calc_line(0, 100, 200, 400, fdf);
+	wu_calc_line(0, 100, 200, 400, fdf);
+	mlx_hook(fdf->win, 33, 1L << 17, __close_window, NULL);
+	mlx_loop(fdf->mlx);
+	__mlx_cleaner(fdf);
+	mlx_destroy_image(fdf->mlx, fdf->img.new_img);
+	mlx_destroy_window(fdf->mlx, fdf->win);
+	mlx_destroy_display(fdf->mlx);
+}

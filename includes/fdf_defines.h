@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define.h                                           :+:      :+:    :+:   */
+/*   fdf_defines.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychibani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 10:09:11 by ychibani          #+#    #+#             */
-/*   Updated: 2022/05/26 10:09:13 by ychibani         ###   ########.fr       */
+/*   Created: 2022/06/09 16:33:03 by ychibani          #+#    #+#             */
+/*   Updated: 2022/06/09 16:33:06 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,176 +26,176 @@
 # endif
 
 # ifndef ESC
-# define ESC 53
+#  define ESC 53
 # endif
 
 # ifndef A
-# define A 0
+#  define A 0
 # endif
 
 # ifndef B 
-# define B 11
+#  define B 11
 # endif
 
 # ifndef C
-# define C 8
+#  define C 8
 # endif
 
 # ifndef D
-# define D 2
+#  define D 2
 # endif
 
 # ifndef E
-# define E 4
+#  define E 4
 # endif
 
 # ifndef F
-# define F 3
+#  define F 3
 # endif
 
 # ifndef G
-# define G 9
+#  define G 9
 # endif
 
 # ifndef H
-# define H 4
+#  define H 4
 # endif
 
 # ifndef I
-# define I 34
+#  define I 34
 # endif
 
 # ifndef J
-# define J 38
+#  define J 38
 # endif
 
 # ifndef K
-# define K 40
+#  define K 40
 # endif
 
 # ifndef L
-# define L 37
+#  define L 37
 # endif
 
 //fais gaffe a MDR (printf)
 # ifndef M
-# define M 46
+#  define M 46
 # endif
 
 # ifndef N
-# define N 45
+#  define N 45
 # endif
 
 # ifndef O
-# define O 31
+#  define O 31
 # endif
 
 # ifndef P
-# define P 35
+#  define P 35
 # endif
 
 # ifndef Q
-# define Q 12
+#  define Q 12
 # endif
 
 # ifndef R
-# define R 15
+#  define R 15
 # endif
 
 # ifndef S
-# define S 1
+#  define S 1
 # endif
 
 # ifndef T
-# define T 17
+#  define T 17
 # endif
 
 # ifndef U
-# define U 32
+#  define U 32
 # endif
 
 # ifndef V
-# define V 9
+#  define V 9
 # endif
 
 # ifndef W 
-# define W 13
+#  define W 13
 # endif
 
 # ifndef X
-# define X 7
+#  define X 7
 # endif
 
 # ifndef Y
-# define Y 16
+#  define Y 16
 # endif
 
 # ifndef Z
-# define Z 6
+#  define Z 6
 # endif
 
 # ifndef ONE_NUM_PAD 
-# define ONE_NUM_PAD 83
+#  define ONE_NUM_PAD 83
 # endif
 
 # ifndef TWO_NUM_PAD 
-# define TWO_NUM_PAD 84
+#  define TWO_NUM_PAD 84
 # endif
 
 # ifndef THREE_NUM_PAD 
-# define THREE_NUM_PAD 85
+#  define THREE_NUM_PAD 85
 # endif
 
 # ifndef FOUR_NUM_PAD
-# define FOUR_NUM_PAD 86
+#  define FOUR_NUM_PAD 86
 # endif
 
 # ifndef FIVE_NUM_PAD 
-# define FIVE_NUM_PAD 87
+#  define FIVE_NUM_PAD 87
 # endif
 
 # ifndef SIX_NUM_PAD
-# define SIX_NUM_PAD 88
+#  define SIX_NUM_PAD 88
 # endif
 
 # ifndef SEVEN_NUM_PAD
-# define SEVEN_NUM_PAD 89
+#  define SEVEN_NUM_PAD 89
 # endif
 
 # ifndef EIGHT_NUM_PAD
-# define EIGHT_NUM_PAD 91
+#  define EIGHT_NUM_PAD 91
 # endif
 
 # ifndef NINE_NUM_PAD
-# define NINE_NUM_PAD 92
+#  define NINE_NUM_PAD 92
 # endif
 
 # ifndef LESS
-# define LESS 78
+#  define LESS 78
 # endif
 
 # ifndef MORE
-# define MORE 69
+#  define MORE 69
 # endif
 
 # ifndef LEFT_ARROW 
-# define LEFT_ARROW 123
+#  define LEFT_ARROW 123
 # endif
 
 # ifndef RIGHT_ARROW
-# define RIGHT_ARROW 124
+#  define RIGHT_ARROW 124
 # endif
 
 # ifndef DOWN_ARROW 
-# define DOWN_ARROW 125
+#  define DOWN_ARROW 125
 # endif
 
 # ifndef UP_ARROW
-# define UP_ARROW 126
+#  define UP_ARROW 126
 # endif
 
 # ifndef ARROW
-# define ARROW 123 || 124 || 125 || 126
+#  define ARROW 123 || 124 || 125 || 126
 # endif
 
-#endif
+# endif

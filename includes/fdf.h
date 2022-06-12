@@ -18,10 +18,8 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include "libft.h"
-# include "structs.h"
-# include "define.h"
-# include "fonctions.h"
+# include "fdf_structs.h"
+# include "fdf_defines.h"
+# include "fdf_fonctions.h"
 
 #endif
-
-

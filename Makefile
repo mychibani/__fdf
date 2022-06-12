@@ -10,13 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_FILES		=	srcs/main.c
+SRCS_FILES		=	srcs/main.c					\
+					srcs/xiaolin/xiaolin_algorithm.c
 
 
 HEADER_FILES		=	libft.h					\
-						struct.h 				\
-						fonctions.h				\
-						define.h				\
+						fdf_structs.h 				\
+						fdf_fonctions.h				\
+						fdf_defines.h				\
 
 NAME			=	fdf
 
@@ -30,7 +31,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra
+CFLAGS			=  	-Wall -Werror -Wextra -fsanitize=address -g3
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	
