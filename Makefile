@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ychibani <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/06/02 15:04:33 by ychibani         ###   ########.fr        #
+#    Updated: 2022/06/16 15:22:11 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_FILES		=	srcs/main.c					\
-					srcs/xiaolin/xiaolin_algorithm.c
+SRCS_FILES		=	srcs/fdf/main.c					\
+					srcs/events/events.c
 
 
 HEADER_FILES		=	libft.h					\
@@ -31,7 +31,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS			=  	-Wall -Werror -Wextra ##-fsanitize=address -g3
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	

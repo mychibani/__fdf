@@ -1,4 +1,9 @@
 {
     "C_Cpp.dimInactiveRegions": false,
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "fdf_fonctions.h": "c",
+        "mlx.h": "c",
+        "fdf_defines.h": "c"
+    }
 }

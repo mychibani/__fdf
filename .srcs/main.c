@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychibani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:08:54 by ychibani          #+#    #+#             */
-/*   Updated: 2022/05/26 10:08:56 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/14 11:45:06 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ int main(void)
 	
 	wu_calc_line(0, 100, 200, 400, fdf);
 	wu_calc_line(0, 100, 200, 400, fdf);
-	mlx_hook(fdf->win, 33, 1L << 17, __close_window, NULL);
+	mlx_hook(fdf->win, 33, 1L<<0, __close_window, NULL);
 	mlx_loop(fdf->mlx);
 	__mlx_cleaner(fdf);
 	mlx_destroy_image(fdf->mlx, fdf->img.new_img);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   fdf_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychibani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/05/26 10:09:38 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/16 13:18:39 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,32 @@ typedef struct s_3d
 
 typedef struct s_line
 {
+	int	x0;
+	int	x1;
+	int	y0;
+	int	y1;
 	
 } t_line;
 
-typedef struct s_program_data
+typedef	struct s_key
 {
-	
-} t_program_data;
+	int	key_hook;
+
+} t_key;
+
+typedef	struct s_cam
+{
+	int	pov;	
+
+} t_cam;
+
+typedef	struct s_program_data
+{
+	t_fdf	*fdf;
+	t_key	*key;
+	t_cam	*cam;
+	t_line	*line;
+
+}	t_program_data;
 
 #endif
