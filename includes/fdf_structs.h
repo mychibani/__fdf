@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/16 13:18:39 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:33:47 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,13 @@ typedef	struct s_cam
 
 typedef	struct s_program_data
 {
-	t_fdf	*fdf;
-	t_key	*key;
-	t_cam	*cam;
-	t_line	*line;
+	unsigned long long	grid_size;
+	int					fd;
+	t_fdf				*fdf;
+	t_key				*key;
+	t_cam				*cam;
+	t_line				*line;
+	t_3d				*grid;
 
 }	t_program_data;
 

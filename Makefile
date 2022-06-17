@@ -6,15 +6,18 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/06/16 15:22:11 by ychibani         ###   ########.fr        #
+#    Updated: 2022/06/17 14:07:26 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_FILES		=	srcs/fdf/main.c					\
-					srcs/events/events.c
+					srcs/events/events.c			\
+					srcs/init/init.c 				\
+					srcs/init/init_mlx.c 			\
+					srcs/clean/clean_quit.c			\
 
 
-HEADER_FILES		=	libft.h					\
+HEADER_FILES		=	libft.h						\
 						fdf_structs.h 				\
 						fdf_fonctions.h				\
 						fdf_defines.h				\
