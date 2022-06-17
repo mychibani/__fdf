@@ -1,0 +1,5 @@
+*.o
+*.d
+fdf_linux
+fdf
+test_maps/*

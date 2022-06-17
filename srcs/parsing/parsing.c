@@ -6,16 +6,33 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:29:35 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/17 15:39:04 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/17 22:01:32 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int parsing(t_program_data *data, int ac, char **av)
+int __is_valid_file_name(char *file_name, char *file_type)
 {
-    data->fd = open(av[1], O_RDONLY);
-    if (data->fd < 0) 
-        return (-1);
-    return (1);
+    int     size;
+
+    size = ft_strlen(file_name) - ft_strlen(file_type);
+    if (size < _SUCCESS_)
+        return (_ERROR_);
+    if (ft_strncmp(file_type, (file_name + size), size))
+        return (_ERROR_);
+    return (_SUCCESS_);
+}
+
+int __parsing(char **file_name)
+{
+    int fd;
+
+    if (__is_valid_file_name(*file_name, ".fdf") == _ERROR_)
+        return (_ERROR_);
+    fd = open(*file_name, O_RDONLY);
+    if (fd < 0)
+        return (_ERROR_);
+    close(fd);
+    return (_SUCCESS_);
 }
