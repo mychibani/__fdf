@@ -31,10 +31,9 @@ void print_data(t_fdf *fdf)
 	printf("endian = %d\n", fdf->img.endian);
 }
 
-
 int	__mlx_loop(t_program_data *data)
 {
-	mlx_hook(data->fdf->win, 2, 17, __mlx_event, &data->fdf);
+	mlx_hook(data->fdf->win, 2, 17, __mlx_event, data);
 	mlx_loop(data->fdf->mlx);
 	mlx_destroy_image(data->fdf->mlx, data->fdf->img.new_img);
 	mlx_destroy_window(data->fdf->mlx, data->fdf->win);
@@ -52,25 +51,21 @@ void	print_data_data(t_program_data *data)
 		printf("fdf malloced\n");
 	if (data->cam)
 		printf("cam malloced\n");
-	if (data->line)
-		printf("line malloced\n");
-	if (data->key)
-		printf("key malloced\n");
+
 }
 
 int main(int ac, char **av)
 {
 	t_program_data *data;
 	
-	data = malloc(0);
 	if (!(ac == 2) || (!av[1]))
 		return (-2);
-	if (!__parsing(av + 1))
+	if (!__parsing(&av[1]))
 		return (-3);
-	if (!__initialization(data, av + 1))
+	data = malloc(sizeof(t_program_data));
+	if (!__init_program_data(data, &av[1]))
 		return (printf("ERROR_MALLOC\n"), -2);
 	print_data_data(data);
-	// print_data(data->fdf);
 	// if (!__mapping(data))
 	// 	return (ERR_MAP, 2);
 	// if (!hooks(data))
@@ -79,6 +74,7 @@ int main(int ac, char **av)
 	/**********
 	 * LOOP *
 	***********/
+
 	if (!__mlx_loop(data))
 		return (3);
 	return (0);

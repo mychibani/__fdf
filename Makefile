@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/06/17 21:58:18 by ychibani         ###   ########.fr        #
+#    Updated: 2022/06/18 19:52:10 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS			=  	-Wall -Werror -Wextra #-fsanitize=address -g3
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	

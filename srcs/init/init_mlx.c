@@ -6,14 +6,17 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:48:00 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/17 12:48:10 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:55:21 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_fdf	*__mlx_init(t_fdf *fdf)
+t_fdf	*__mlx_init(void)
 {	
+	t_fdf *fdf;
+
+	fdf = (t_fdf *)malloc(sizeof(t_fdf));
 	if (!fdf)
 		return (NULL);
 	fdf->mlx = mlx_init();
