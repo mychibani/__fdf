@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/06/18 19:52:10 by ychibani         ###   ########.fr        #
+#    Updated: 2022/06/18 20:12:51 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS_FILES		=	srcs/fdf/main.c					\
 					srcs/events/events.c			\
 					srcs/init/init.c 				\
 					srcs/init/init_mlx.c 			\
+					srcs/print_debug/print_debug.c 	\
 					srcs/clean/clean_quit.c			\
 
 

@@ -20,17 +20,6 @@ void __put_pixel_on_img(t_fdf *fdf, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void print_data(t_fdf *fdf)
-{
-	printf("mlx = %p\n", fdf->mlx);
-	printf("win = %p\n", fdf->win);
-	printf("img = %p\n", fdf->img.new_img);
-	printf("img addr = %p\n", fdf->img.addr);
-	printf("bits per pixel = %d\n", fdf->img.bits_per_pixel);
-	printf("line lenght = %d\n", fdf->img.line_length);
-	printf("endian = %d\n", fdf->img.endian);
-}
-
 int	__mlx_loop(t_program_data *data)
 {
 	mlx_hook(data->fdf->win, 2, 17, __mlx_event, data);
@@ -41,17 +30,6 @@ int	__mlx_loop(t_program_data *data)
 	free(data->fdf->mlx);
 	__clean(data);
 	return (1);
-}
-
-void	print_data_data(t_program_data *data)
-{
-	if (data)
-		printf("data malloced\n");
-	if (data->fdf)
-		printf("fdf malloced\n");
-	if (data->cam)
-		printf("cam malloced\n");
-
 }
 
 int main(int ac, char **av)
@@ -65,7 +43,6 @@ int main(int ac, char **av)
 	data = malloc(sizeof(t_program_data));
 	if (!__init_program_data(data, &av[1]))
 		return (printf("ERROR_MALLOC\n"), -2);
-	print_data_data(data);
 	// if (!__mapping(data))
 	// 	return (ERR_MAP, 2);
 	// if (!hooks(data))
