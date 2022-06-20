@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:29 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/18 20:14:20 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:04:11 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	__put_pixel_on_img(t_fdf *fdf, int x, int y, int color);
 int		__mlx_event(int key_hook, t_program_data *data);
 
 void	__clean(t_program_data *data);
-
-
 
 
 
