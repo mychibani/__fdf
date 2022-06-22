@@ -88,8 +88,16 @@ int main(int ac, char **av)
 	data = malloc(sizeof(t_program_data));
 	if (!__init_program_data(data, &av[1]))
 		return (printf("ERROR_MALLOC\n"), -2);
-	__print_line_to_image(data->fdf, 1000, 1000, 550, 400);
-	mlx_put_image_to_window(data->fdf->mlx, data->fdf->win, data->fdf->img.new_img, 0, 0);
+	// __print_line_to_image(data->fdf, 1920, 0, 0, 0);
+	// mlx_put_image_to_window(data->fdf->mlx, data->fdf->win, data->fdf->img.new_img, 0, 0);
+
+	// t_3d **map;
+	t_map_data data_map;
+
+	data_map = __init_map_data(data->fd);
+	printf("%d , %d\n", data_map.x_size, data_map.y_size);
+	// map = __init_3d_grid(&data_map);
+	// print_points(map, data_map);
 	// if (!__mapping(data))
 		// return (ERR_MAP, 2);
 	// if (!hooks(data))

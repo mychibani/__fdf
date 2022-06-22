@@ -17,7 +17,7 @@ int __get_y_size(int fd)
 	char *str;
 	int y;
 
-	y = 1;
+	y = 0;
 	str = __gnl(fd);
 	if (!str)
 		return (-1);
@@ -28,6 +28,7 @@ int __get_y_size(int fd)
 		free(str);
 		str = __gnl(fd);
 	}
+	close(fd);
 	return (free(str), y);
 }
 
@@ -40,7 +41,7 @@ int __get_x_size(char *str)
 	i = 0;
 	x = 0;
 	if (!str)
-		return (0);
+		return (-1);
 	len = ft_strlen(str);
 	while (i < len - 1)
 	{
@@ -58,75 +59,77 @@ int __get_x_size(char *str)
 	return (x);
 }
 
-t_3d init_point(t_3d file_points, int x, int y, int z)
-{
-	file_points.x = x;
-	file_points.y = y;
-	file_points.z = z;
-	return (file_points);
-}
 
-void    fill_with_line(t_3d *file_points, int index, int x, int y, char *str)
+t_map_data __init_map_data(int fd)
 {
-        int i;
-        int x;
-        
-        i = 0;
-		x = 0;
-		while ((x < x_len) && str[i])
-		{
-			while (str[i] == ' ')
-				i++;
-			file_points[index] = init_point(file_points[index], x, y, ft_atoi(&str[i]));
-			index++;
-			while (ft_isdigit(str[i]) || str[i] == '-')
-				i++;
-			x++;
-		}
-}
-
-t_3d *init_3d_points(int fd, char *av)
-{
-	t_3d		*file_points;
 	char		*str;
-	int			i;
-	int			x_len;
-	int			y_len;
-	int			index;
-	int			x;
-	int			y;
-    int         size;
+	t_map_data	data;
 
-	x = 0;
-	y = 0;
-	i = 0;
+	data.y_size = __get_y_size(fd);
+	printf("%d\n", fd);
 	str = __gnl(fd);
-	y_len = __get_y_size(fd);
-	x_len = __get_x_size(str);
+	data.x_size = __get_x_size(str);
+	free(str);
 	close(fd);
-	fd = open(av, O_RDONLY);
+	return (data);
+}
+
+// void	init_point_struct(t_3d *grid, int x, int y, int z)
+// {	
+// 	grid[x][y].x = x;
+// 	grid[x][y].y = y;
+// 	grid[x][y].z = z;
+// 	// grid[x][y].color = __get_gradient(z);
+// }
+
+t_3d	*__init_line_struct(t_map_data data, char *str, int y)
+{
+	t_3d	*grid_line;
+	int		i;
+	int		x;
+	int		index;
+
 	index = 0;
-	size = x_len * y_len;
-	file_points = (t_3d *)malloc(sizeof(t_3d) * (*size));
-	if (!file_points)
-		return (free(str), NULL);
-	while (y < y_len && str)
+	grid_line = (t_3d *)malloc(sizeof(t_3d) * (__get_x_size(str)));
+	if (!grid_line)
+		return (NULL);
+	while (str[i] && x < data.x_size)
 	{
-		free(str);
-		str = __gnl(fd);
-		i = 0;
-		x = 0;
-		while ((x < x_len) && str[i])
-		{
-			while (str[i] == ' ')
-				i++;
-			file_points[index] = init_point(file_points[index], x, y, ft_atoi(&str[i]));
-			index++;
-			while (ft_isdigit(str[i]) || str[i] == '-')
-				i++;
-			x++;
-		}
-		y++;
+		while (str[i] == ' ')
+			i++;
+		grid_line[index].x = x;
+		grid_line[index].y = y;
+		grid_line[index].z = ft_atoi(&str[i]);
+		index++;
+		// grid_line[index].color = __get_gradient(&str[i]);
+		while (ft_isdigit(str[i]))
+			i++;
+		x++;
 	}
-	return (free(str), file_points);
+	if (x < data.x_size)
+		return (NULL);
+	free(str);
+	return (grid_line);
+}
+
+t_3d	**__init_3d_grid(t_map_data *data)
+{
+	t_map_data	map_data;
+	t_3d		**grid;
+	char		*str;
+	int			y;
+
+	y = 0;
+	map_data = __init_map_data(data->fd);
+	grid = (t_3d **)malloc(sizeof(t_3d *) * map_data.y_size);
+	if (!grid)
+		return (NULL);
+	while (y < map_data.y_size)
+	{
+		str = __gnl(data->fd);
+		grid[y] = __init_line_struct(map_data, str, y);
+		y++;	
+	}
+	close(data->fd);
+	return (grid);
 }

@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/17 22:31:43 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:54:59 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 
-}	t_img;
+} t_img;
 
 typedef struct s_fdf
 {
@@ -33,9 +33,9 @@ typedef struct s_fdf
 
 typedef struct s_3d
 {
-	int x;
-	int y;
-	int z;
+	int	x;
+	int	y;
+	int	z;
 	int	color;
 
 } t_3d;
@@ -61,6 +61,22 @@ typedef	struct s_cam
 
 } t_cam;
 
+typedef	struct s_2d
+{
+	int x;
+	int y;
+	int	color;
+	
+} t_2d;
+
+typedef struct s_map_data
+{
+	int	x_size;	
+	int	y_size;	
+	int fd;
+
+} t_map_data;
+
 typedef	struct s_program_data
 {
 	int					fd;
@@ -70,6 +86,6 @@ typedef	struct s_program_data
 	t_line				*line;
 	t_3d				*grid;
 
-}	t_program_data;
+} t_program_data;
 
 #endif
