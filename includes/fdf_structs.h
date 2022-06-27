@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/21 18:54:59 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:11:13 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,24 @@ typedef	struct s_2d
 
 typedef struct s_map_data
 {
-	int	x_size;	
-	int	y_size;	
-	int fd;
+	int		x_size;	
+	int		y_size;	
+	char	*file_name;
+	int		fd;
 
 } t_map_data;
 
 typedef	struct s_program_data
 {
 	int					fd;
+	char				*file_name;
 	t_fdf				*fdf;
 	t_key				*key;
 	t_cam				*cam;
 	t_line				*line;
-	t_3d				*grid;
+	t_3d				**grid;
+	t_2d				**final_map;
+	t_map_data			*map_data;
 
 } t_program_data;
 

@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 20:13:44 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/22 23:25:38 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:19:31 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,22 @@ void	print_line(t_line *line)
 	printf("%d\n", line->y1);
 }
 
-void	print_points(t_3d **points, t_map_data map_data)
+void	print_points(t_3d **points, t_map_data *map_data)
 {
 	int	i;
 	int j;
 	
 	i = 0;
 	j = 0;
-	while (i < map_data.y_size)
+	while (i < map_data->y_size)
 	{
-		while (j < map_data.x_size)
+		while (j < map_data->x_size)
 		{
-			printf("%d\t", points[i][j].x);
-			printf("%d\t", points[i][j].y);
-			printf("%d\t", points[i][j].z);
+			printf("[%d] ", points[i][j].x);
+			printf("[%d] ", points[i][j].y);
+			printf("[%d] ", points[i][j].z);
 			j++;
 		}
-		write(1, "\n", 1);
 		j = 0;
 		i++;
 	}

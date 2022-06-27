@@ -60,76 +60,78 @@ int __get_x_size(char *str)
 }
 
 
-t_map_data __init_map_data(int fd)
+t_map_data *__init_map_data(int fd, char *file_name)
 {
 	char		*str;
-	t_map_data	data;
+	t_map_data	*map;
 
-	data.y_size = __get_y_size(fd);
-	printf("%d\n", fd);
-	str = __gnl(fd);
-	data.x_size = __get_x_size(str);
+	map = (t_map_data *)malloc(sizeof(t_map_data));
+	if (!map)
+		return (NULL);
+	map->y_size = __get_y_size(fd);
+	map->fd = open(file_name, O_RDONLY);
+	str = __gnl(map->fd);
+	map->x_size = __get_x_size(str);
 	free(str);
-	close(fd);
-	return (data);
+	close(map->fd);
+	map->fd = open(file_name, O_RDONLY);
+	return (map);
 }
 
-// void	init_point_struct(t_3d *grid, int x, int y, int z)
-// {	
-// 	grid[x][y].x = x;
-// 	grid[x][y].y = y;
-// 	grid[x][y].z = z;
-// 	// grid[x][y].color = __get_gradient(z);
-// }
+void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
+{
+	grid_line->x = x * 50 + SCREEN_WIDTH / 3;
+	grid_line->y = y * 50 - 100;
+	grid_line->z = z * (30 / 2);
+}
 
-t_3d	*__init_line_struct(t_map_data data, char *str, int y)
+t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
 {
 	t_3d	*grid_line;
+	int		len;
 	int		i;
 	int		x;
 	int		index;
 
 	index = 0;
+	i = 0;
+	x = 0;
+	len = ft_strlen(str);
 	grid_line = (t_3d *)malloc(sizeof(t_3d) * (__get_x_size(str)));
 	if (!grid_line)
 		return (NULL);
-	while (str[i] && x < data.x_size)
+	while (i < len - 1 && x < data->x_size)
 	{
 		while (str[i] == ' ')
 			i++;
-		grid_line[index].x = x;
-		grid_line[index].y = y;
-		grid_line[index].z = ft_atoi(&str[i]);
+		__init_3d_line_struct(&grid_line[index], x, y, ft_atoi(&str[i]));
 		index++;
-		// grid_line[index].color = __get_gradient(&str[i]);
-		while (ft_isdigit(str[i]))
+		while (ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 		x++;
 	}
-	if (x < data.x_size)
+	if (x < data->x_size)
 		return (NULL);
-	free(str);
 	return (grid_line);
 }
 
-t_3d	**__init_3d_grid(t_map_data *data)
+t_3d	**__init_3d_grid(t_map_data *map_data)
 {
-	t_map_data	map_data;
 	t_3d		**grid;
 	char		*str;
 	int			y;
 
 	y = 0;
-	map_data = __init_map_data(data->fd);
-	grid = (t_3d **)malloc(sizeof(t_3d *) * map_data.y_size);
+	grid = (t_3d **)malloc(sizeof(t_3d *) * map_data->y_size);
 	if (!grid)
 		return (NULL);
-	while (y < map_data.y_size)
+	while (y < map_data->y_size)
 	{
-		str = __gnl(data->fd);
+		str = __gnl(map_data->fd);
 		grid[y] = __init_line_struct(map_data, str, y);
+		free(str);
 		y++;	
 	}
-	close(data->fd);
+	close(map_data->fd);
 	return (grid);
 }
