@@ -75,14 +75,16 @@ t_map_data *__init_map_data(int fd, char *file_name)
 	free(str);
 	close(map->fd);
 	map->fd = open(file_name, O_RDONLY);
+	if (map->x_size < 0 || map->y_size < 0)
+		return (NULL);
 	return (map);
 }
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
 {
 	grid_line->x = x * 50 + SCREEN_WIDTH / 3;
-	grid_line->y = y * 50 - 100;
-	grid_line->z = z * (30 / 2);
+	grid_line->y = y * 50 - 300;
+	grid_line->z = z * (30 / 7);
 }
 
 t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
@@ -97,6 +99,8 @@ t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
 	i = 0;
 	x = 0;
 	len = ft_strlen(str);
+	if (__get_x_size(str) < 0)
+		return (NULL);
 	grid_line = (t_3d *)malloc(sizeof(t_3d) * (__get_x_size(str)));
 	if (!grid_line)
 		return (NULL);
@@ -120,8 +124,12 @@ t_3d	**__init_3d_grid(t_map_data *map_data)
 	t_3d		**grid;
 	char		*str;
 	int			y;
+	int			size;
 
 	y = 0;
+	size = map_data->y_size;
+	if (size < 0)
+		return (NULL);
 	grid = (t_3d **)malloc(sizeof(t_3d *) * map_data->y_size);
 	if (!grid)
 		return (NULL);

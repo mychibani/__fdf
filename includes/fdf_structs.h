@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/26 11:11:13 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:25:56 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_3d
 	int	x;
 	int	y;
 	int	z;
-	int	color;
+	unsigned int	color;
 
 } t_3d;
 
@@ -75,6 +75,8 @@ typedef struct s_map_data
 	int		y_size;	
 	char	*file_name;
 	int		fd;
+	int		min;
+	int		max;
 
 } t_map_data;
 

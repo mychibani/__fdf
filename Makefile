@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/06/27 09:54:34 by ychibani         ###   ########.fr        #
+#    Updated: 2022/07/04 12:14:09 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS_FILES		=	srcs/fdf/main.c					\
 					srcs/init/init_points.c 		\
 					srcs/print_debug/print_debug.c 	\
 					srcs/clean/clean_quit.c			\
+					srcs/utils/mlx_utils.c			\
 
 
 HEADER_FILES		=	libft.h						\
