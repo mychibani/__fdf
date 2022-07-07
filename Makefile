@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/07/04 12:14:09 by ychibani         ###   ########.fr        #
+#    Updated: 2022/07/07 17:02:28 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS_FILES		=	srcs/fdf/main.c					\
 					srcs/parsing/parsing.c			\
 					srcs/events/events.c			\
 					srcs/init/init.c 				\
+					srcs/init/init_map_data.c		\
 					srcs/init/init_mlx.c 			\
 					srcs/init/init_points.c 		\
 					srcs/print_debug/print_debug.c 	\
@@ -38,7 +39,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS			=  	-Wall -Werror -Wextra #-fsanitize=address -g3
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	

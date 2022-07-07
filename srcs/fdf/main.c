@@ -37,10 +37,10 @@ void	__print_line_to_image(t_fdf *fdf, int x1, int y1, int x2, int y2, unsigned 
 	int e2;
 
 
-	dx = __abs(x2 - x1);
-	dy = -__abs(y2 - y1);
-	sx = __int_trn((x2 > x1), 1, -1);
-	sy = __int_trn((y2 > y1), 1, -1);
+	dx = (int)float_abs(x2 - x1);
+	dy = -(int)float_abs(y2 - y1);
+	sx = int_trn((x2 > x1), 1, -1);
+	sy = int_trn((y2 > y1), 1, -1);
 	err = dx + dy;
 	while (x1 != x2 && y1 != y2)
 	{

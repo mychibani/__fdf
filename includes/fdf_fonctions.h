@@ -6,17 +6,27 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:29 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/01 17:25:52 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:04:18 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FONCTIONS_H
 #define FDF_FONCTIONS_H
 
+/*
+**  Init
+*/
+
 bool        __init_program_data(t_program_data *data, char *file_name);
 t_3d        **__init_3d_grid(t_map_data *data);
 t_fdf       *__mlx_init(void);
 t_map_data  *__init_map_data(int fd, char *file_name);
+int         __get_y_size(int fd);
+int         __get_x_size(char *str);
+
+/*
+**  Utils
+*/
 
 int		__parsing(char **file_name);
 

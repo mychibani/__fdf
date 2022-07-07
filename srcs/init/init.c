@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:45:12 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/04 13:37:03 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:46:20 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool __init_program_data(t_program_data *data, char *file_name)
 
 
 	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (_ERROR_);
 	data->map_data = __init_map_data(fd, file_name);
 	if (!data->map_data)
 		return (NULL);

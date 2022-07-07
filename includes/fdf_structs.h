@@ -6,12 +6,12 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/01 15:25:56 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:27:03 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef FDF_STRUCT_H
+# define FDF_STRUCT_H
 
 typedef struct s_img
 {

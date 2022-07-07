@@ -60,25 +60,6 @@ int __get_x_size(char *str)
 }
 
 
-t_map_data *__init_map_data(int fd, char *file_name)
-{
-	char		*str;
-	t_map_data	*map;
-
-	map = (t_map_data *)malloc(sizeof(t_map_data));
-	if (!map)
-		return (NULL);
-	map->y_size = __get_y_size(fd);
-	map->fd = open(file_name, O_RDONLY);
-	str = __gnl(map->fd);
-	map->x_size = __get_x_size(str);
-	free(str);
-	close(map->fd);
-	map->fd = open(file_name, O_RDONLY);
-	if (map->x_size < 0 || map->y_size < 0)
-		return (NULL);
-	return (map);
-}
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
 {
@@ -136,6 +117,7 @@ t_3d	**__init_3d_grid(t_map_data *map_data)
 	while (y < map_data->y_size)
 	{
 		str = __gnl(map_data->fd);
+		printf("%s", str);
 		grid[y] = __init_line_struct(map_data, str, y);
 		free(str);
 		y++;	

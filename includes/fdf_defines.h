@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_defines.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychibani <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:33:03 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/09 16:33:06 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:32:09 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef DEFINE_H
-# define DEFINE_H
+#ifndef FDF_DEFINES_H
+# define FDF_DEFINES_H
 
 # ifndef SCREEN_WIDTH
 #  define SCREEN_WIDTH 1920
@@ -19,10 +19,6 @@
 
 # ifndef SCREEN_HEIGHT
 #  define SCREEN_HEIGHT 1080
-# endif
-
-# ifndef _ERROR_
-#  define _ERROR_ -1
 # endif
 
 # ifndef ESC
