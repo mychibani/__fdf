@@ -48,17 +48,12 @@ int __get_x_size(char *str)
 		while (str[i] == ' ')
 			i++;
 		x++;
-		if (str[i] == '-' && ft_isdigit(str[i + 1]))
+		while (str[i] != ' ' && str[i])
 			i++;
-		while (ft_isdigit(str[i]))
-			i++;
-		if (!(str[i] == ' ' || str[i] == '\n' || !str[i]))
-			return (_ERROR_);
 		i++;
 	}
 	return (x);
 }
-
 
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
@@ -91,7 +86,7 @@ t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
 			i++;
 		__init_3d_line_struct(&grid_line[index], x, y, ft_atoi(&str[i]));
 		index++;
-		while (ft_isdigit(str[i]) || str[i] == '-')
+		while (str[i] != ' ' && str[i])
 			i++;
 		x++;
 	}
@@ -105,23 +100,29 @@ t_3d	**__init_3d_grid(t_map_data *map_data)
 	t_3d		**grid;
 	char		*str;
 	int			y;
-	int			size;
+	int			temp;
 
 	y = 0;
-	size = map_data->y_size;
-	if (size < 0)
+	if (map_data->y_size < 0)
 		return (NULL);
+	temp = open(map_data->file_name, O_RDONLY);
 	grid = (t_3d **)malloc(sizeof(t_3d *) * map_data->y_size);
 	if (!grid)
 		return (NULL);
+	str = __gnl(temp);
+	while (str)
+	{
+		free(str);
+		str = __gnl(temp);
+	}
 	while (y < map_data->y_size)
 	{
 		str = __gnl(map_data->fd);
-		printf("%s", str);
 		grid[y] = __init_line_struct(map_data, str, y);
 		free(str);
 		y++;	
-	}
+	}	
+	close(temp);
 	close(map_data->fd);
 	return (grid);
 }

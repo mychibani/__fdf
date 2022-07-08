@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:00:57 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/07 17:11:42 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:42:43 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_map_data *__init_map_data(int fd, char *file_name)
 	free(str);
 	close(map->fd);
 	map->fd = open(file_name, O_RDONLY);
+	map->file_name = file_name;
 	if (map->x_size < 0 || map->y_size < 0)
 		return (NULL);
 	return (map);
