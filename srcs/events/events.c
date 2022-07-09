@@ -20,11 +20,11 @@ void	__clean(t_program_data *data);
 
 int		__mlx_event(int key_hook, t_program_data *data)
 {
-	(void)key_hook;
-	mlx_destroy_image(data->fdf->mlx, data->fdf->img.new_img);
-	mlx_destroy_window(data->fdf->mlx, data->fdf->win);
-	mlx_destroy_display(data->fdf->mlx);
-	free(data->fdf->mlx);
-	__clean(data);
-	exit(0);
+	if ()
+		mlx_destroy_image(data->fdf->mlx, data->fdf->img.new_img);
+		mlx_destroy_window(data->fdf->mlx, data->fdf->win);
+		mlx_destroy_display(data->fdf->mlx);
+		free(data->fdf->mlx);
+		__clean(data);
+		exit(0);
 }

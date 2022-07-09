@@ -16,7 +16,7 @@
 
 int	__mlx_loop(t_program_data *data)
 {
-	mlx_hook(data->fdf->win, 2, 17, __mlx_event, data);
+	printf("%d\n", mlx_hook(data->fdf->win, 2, ESC, __mlx_event, data));
 	mlx_loop(data->fdf->mlx);
 	mlx_destroy_image(data->fdf->mlx, data->fdf->img.new_img);
 	mlx_destroy_window(data->fdf->mlx, data->fdf->win);

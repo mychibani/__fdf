@@ -58,7 +58,7 @@ int __get_x_size(char *str)
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
 {
-	grid_line->x = x * 50 + SCREEN_WIDTH / 3;
+	grid_line->x = x * 50 + 500;
 	grid_line->y = y * 50 - 300;
 	grid_line->z = z * (30 / 7);
 }
