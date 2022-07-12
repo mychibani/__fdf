@@ -58,9 +58,9 @@ int __get_x_size(char *str)
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
 {
-	grid_line->x = x * 50 + 500;
-	grid_line->y = y * 50 - 300;
-	grid_line->z = z * (30 / 7);
+	grid_line->x = x;
+	grid_line->y = y;
+	grid_line->z = z;
 }
 
 t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
@@ -84,7 +84,7 @@ t_3d	*__init_line_struct(t_map_data *data, char *str, int y)
 	{
 		while (str[i] == ' ')
 			i++;
-		__init_3d_line_struct(&grid_line[index], x, y, ft_atoi(&str[i]));
+		__init_3d_line_struct(&grid_line[index], (x - data->x_size / 2), (y - data->y_size / 2), ft_atoi(&str[i]));
 		index++;
 		while (str[i] != ' ' && str[i])
 			i++;

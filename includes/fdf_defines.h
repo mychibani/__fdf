@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:33:03 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/07 15:32:09 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/10 14:54:19 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,47 +22,47 @@
 # endif
 
 # ifndef ESC
-#  define ESC 53
+#  define ESC 65307
 # endif
 
 # ifndef A
-#  define A 0
+#  define A 97
 # endif
 
 # ifndef B 
-#  define B 11
+#  define B 98
 # endif
 
 # ifndef C
-#  define C 8
+#  define C 99
 # endif
 
 # ifndef D
-#  define D 2
+#  define D 100
 # endif
 
 # ifndef E
-#  define E 4
+#  define E 101
 # endif
 
 # ifndef F
-#  define F 3
+#  define F 102
 # endif
 
 # ifndef G
-#  define G 9
+#  define G 103
 # endif
 
 # ifndef H
-#  define H 4
+#  define H 104
 # endif
 
 # ifndef I
-#  define I 34
+#  define I 105
 # endif
 
 # ifndef J
-#  define J 38
+#  define J 106
 # endif
 
 # ifndef K

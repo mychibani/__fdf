@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:36 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/07 15:27:03 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:03:40 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_3d
 	int	x;
 	int	y;
 	int	z;
-	unsigned int	color;
 
 } t_3d;
 
@@ -46,20 +45,9 @@ typedef struct s_line
 	int	x1;
 	int	y0;
 	int	y1;
+	unsigned int	color;
 	
 } t_line;
-
-typedef	struct s_key
-{
-	int	key_hook;
-
-} t_key;
-
-typedef	struct s_cam
-{
-	int	pov;	
-
-} t_cam;
 
 typedef	struct s_2d
 {
@@ -75,18 +63,29 @@ typedef struct s_map_data
 	int		y_size;	
 	char	*file_name;
 	int		fd;
+    int		zoom;
+	int		scaling;
 	int		min;
 	int		max;
 
 } t_map_data;
+
+typedef struct s_vars
+{
+	int	dx;
+	int	sx;
+	int	sy;
+	int	dy;
+	int	err;
+	int e2;
+
+} t_vars;
 
 typedef	struct s_program_data
 {
 	int					fd;
 	char				*file_name;
 	t_fdf				*fdf;
-	t_key				*key;
-	t_cam				*cam;
 	t_line				*line;
 	t_3d				**grid;
 	t_2d				**final_map;

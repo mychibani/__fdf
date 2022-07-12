@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
 
 
 int	__mlx_loop(t_program_data *data)
 {
-	printf("%d\n", mlx_hook(data->fdf->win, 2, ESC, __mlx_event, data));
+	mlx_hook(data->fdf->win, 17, 1L << 0, autre_fonction, data);
 	mlx_loop(data->fdf->mlx);
 	mlx_destroy_image(data->fdf->mlx, data->fdf->img.new_img);
 	mlx_destroy_window(data->fdf->mlx, data->fdf->win);
@@ -27,34 +26,29 @@ int	__mlx_loop(t_program_data *data)
 }
 
 
-void	__print_line_to_image(t_fdf *fdf, int x1, int y1, int x2, int y2, unsigned int color)
+void	__print_line_to_image(t_fdf *fdf, t_line *line)
 {
-	int	dx;
-	int	sx;
-	int	sy;
-	int	dy;
-	int	err;
-	int e2;
+	t_vars vars;
 
-
-	dx = (int)float_abs(x2 - x1);
-	dy = -(int)float_abs(y2 - y1);
-	sx = int_trn((x2 > x1), 1, -1);
-	sy = int_trn((y2 > y1), 1, -1);
-	err = dx + dy;
-	while (x1 != x2 && y1 != y2)
+	vars.dx = (int)float_abs(line->x1 - line->x0);
+	vars.dy = -(int)float_abs(line->y1 - line->y0);
+	vars.sx = int_trn((line->x1 > line->x0), 1, -1);
+	vars.sy = int_trn((line->y1 > line->y0), 1, -1);
+	vars.err = vars.dx + vars.dy;
+	print_line(line);
+	while (line->x0 != line->x1 && line->y0 != line->y1)
 	{
-		__put_pixel_on_img(fdf, x1, y1, color);
-		e2 = 2 * err;
-		if (e2 >= dy)
+		__put_pixel_on_img(fdf, line->x0, line->y0, line->color);
+		vars.e2 = 2 * vars.err;
+		if (vars.e2 >= vars.dy)
 		{
-			err += dy;
-			x1 += sx;
+			vars.err += vars.dy;
+			line->x0 += vars.sx;
 		}
-		if (e2 <= dy)
+		if (vars.e2 <= vars.dy)
 		{
-			err += dx;
-			y1 += sy;
+			vars.err += vars.dx;
+			line->y0 += vars.sy;
 		}
 	}
 }
@@ -73,8 +67,10 @@ t_2d	**isometric_projection(t_3d **grid, t_map_data *data)
 		final_grid[i] = (t_2d *)malloc(sizeof(t_2d) * data->x_size);
 		while (j < data->x_size)
 		{
-			final_grid[i][j].x = (grid[i][j].x - grid[i][j].y) * cos(0.6);
-			final_grid[i][j].y = (grid[i][j].x + grid[i][j].y) * sin(0.6) - grid[i][j].z;
+			data->scaling = 11.6;
+			data->zoom = 50;
+			final_grid[i][j].x = (data->zoom * grid[i][j].x - data->zoom * grid[i][j].y) * cos(0.6) + SCREEN_WIDTH / 2;
+			final_grid[i][j].y = (data->zoom * grid[i][j].x + data->zoom * grid[i][j].y) * sin(0.6) - (data->zoom / data->scaling) * grid[i][j].z + SCREEN_HEIGHT / 2;
 			if (grid[i][j].z > 0)
 				final_grid[i][j].color = 0xFFFF0000;
 			else

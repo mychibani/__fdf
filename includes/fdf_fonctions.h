@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:29 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/09 17:57:39 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/12 13:40:53 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ int         __get_x_size(char *str);
 **  Utils
 */
 
+void	print_line(t_line *line);
+
 int		__parsing(char **file_name);
 
 void	__put_pixel_on_img(t_fdf *fdf, int x, int y, int color);
 int     __line_mapping(t_2d **grid, t_map_data *data, t_fdf *fdf);
-void	__print_line_to_image(t_fdf *fdf, int x1, int y1, int x2, int y2, unsigned int color);
-int		__mlx_event(int key_hook, t_program_data *data);
+void	__print_line_to_image(t_fdf *fdf, t_line *line);
+int		close_win(int key_hook, t_program_data *data);
+int autre_fonction(t_program_data *data);
 
 void	__clean(t_program_data *data);
 
