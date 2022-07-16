@@ -4,6 +4,10 @@
     "files.associations": {
         "fdf_fonctions.h": "c",
         "mlx.h": "c",
-        "fdf_defines.h": "c"
+        "fdf_defines.h": "c",
+        "fdf_structs.h": "c",
+        "stdlib.h": "c",
+        "structs.h": "c",
+        "fonctions.h": "c"
     }
 }

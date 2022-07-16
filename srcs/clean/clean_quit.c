@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:06:13 by ychibani          #+#    #+#             */
-/*   Updated: 2022/06/28 20:53:50by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/16 19:25:13 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	__clean_grid(t_2d **grid, t_map_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->y_size)
 	{

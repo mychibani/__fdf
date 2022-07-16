@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:33:03 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/10 14:54:19 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/16 16:54:36 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # ifndef SCREEN_HEIGHT
 #  define SCREEN_HEIGHT 1080
+# endif
+
+# ifndef SCALING
+#  define SCALING 1.5
 # endif
 
 # ifndef ESC
@@ -66,68 +70,68 @@
 # endif
 
 # ifndef K
-#  define K 40
+#  define K 107
 # endif
 
 # ifndef L
-#  define L 37
+#  define L 108
 # endif
 
 //fais gaffe a MDR (printf)
 # ifndef M
-#  define M 46
+#  define M 109
 # endif
 
 # ifndef N
-#  define N 45
+#  define N 110
 # endif
 
 # ifndef O
-#  define O 31
+#  define O 111
 # endif
 
 # ifndef P
-#  define P 35
+#  define P 112
 # endif
 
 # ifndef Q
-#  define Q 12
+#  define Q 113
 # endif
 
 # ifndef R
-#  define R 15
+#  define R 114
 # endif
 
 # ifndef S
-#  define S 1
+#  define S 115
 # endif
 
 # ifndef T
-#  define T 17
+#  define T 116
 # endif
 
 # ifndef U
-#  define U 32
+#  define U 117
 # endif
 
 # ifndef V
-#  define V 9
+#  define V 118
 # endif
 
 # ifndef W 
-#  define W 13
+#  define W 119
 # endif
 
 # ifndef X
-#  define X 7
+#  define X 120
 # endif
 
 # ifndef Y
-#  define Y 16
+#  define Y 121
 # endif
 
 # ifndef Z
-#  define Z 6
+#  define Z 122
 # endif
 
 # ifndef ONE_NUM_PAD 

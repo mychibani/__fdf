@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/07/12 15:44:01 by ychibani         ###   ########.fr        #
+#    Updated: 2022/07/16 20:23:48 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ SRCS_FILES		=	srcs/fdf/main.c					\
 					srcs/init/init_map_data.c		\
 					srcs/init/init_mlx.c 			\
 					srcs/init/init_points.c 		\
-					srcs/print_debug/print_debug.c 	\
 					srcs/clean/clean_quit.c			\
 					srcs/utils/mlx_utils.c			\
+					srcs/utils/mapping_utils.c		\
+					srcs/utils/line_algorithm.c		\
 
 
 HEADER_FILES		=	libft.h						\
@@ -39,7 +40,7 @@ LIBFT			=	libft/libft.a
 
 CC			=	gcc 
 
-CFLAGS			=  	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS			=  	-Wall -Werror -Wextra 
 
 MLX			=	-L ./mlx/ -lmlx -lXext -lX11 -lm -O3
 	
@@ -102,4 +103,4 @@ git :
 
 -include ${DEPS_FILES}
 
-.PHONY:			all clean fclean re bonus
+.PHONY:			all clean fclean re bonus leaks

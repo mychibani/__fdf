@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:29 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/12 13:40:53 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/15 17:10:12 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int     __line_mapping(t_2d **grid, t_map_data *data, t_fdf *fdf);
 void	__print_line_to_image(t_fdf *fdf, t_line *line);
 int		close_win(int key_hook, t_program_data *data);
 int autre_fonction(t_program_data *data);
+int	__put_image_to_window(t_program_data *data);
 
 void	__clean(t_program_data *data);
 
