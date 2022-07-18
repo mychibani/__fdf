@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 20:20:40 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:37:14 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:27:41 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	__put_image_to_window(t_program_data *data)
 	return (_SUCCESS_);
 }
 
-int	init_x(t_program_data *data, int x, int y)
+int	init_x(t_map_data *data, int x, int y)
 {
 	return ((data->zoom * x - data->zoom * y)
 		* cos(0.6) + SCREEN_WIDTH / 2);
 }
 
-int	init_y(t_program_data *data, int x, int y)
+int	init_y(t_map_data *data, int x, int y, int z)
 {
 	return ((data->zoom * x + data->zoom * y)
 		* sin(0.6) - (data->zoom / data->scaling) * z + SCREEN_HEIGHT / 2);

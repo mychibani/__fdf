@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:45:12 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:25:30 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:28:16 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ bool	__init_program_data(t_program_data *data, char *file_name)
 	data->fdf = __mlx_init();
 	data->fd = fd;
 	data->grid = __init_3d_grid(data->map_data);
-	__get_min_max_in_tab(data->grid, data->map_data,
-		&data->map_data->min, &data->map_data->max);
 	data->final_map = isometric_projection(data->grid, data->map_data);
 	data->file_name = file_name;
 	if (!data || !data->fdf || !data->map_data || !data->grid)

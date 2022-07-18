@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:33:03 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 16:54:36 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:50:29 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef SCALING
-#  define SCALING 1.5
+#  define SCALING 10
 # endif
 
 # ifndef ESC
@@ -33,7 +33,7 @@
 #  define A 97
 # endif
 
-# ifndef B 
+# ifndef B
 #  define B 98
 # endif
 
@@ -77,7 +77,6 @@
 #  define L 108
 # endif
 
-//fais gaffe a MDR (printf)
 # ifndef M
 #  define M 109
 # endif
@@ -118,7 +117,7 @@
 #  define V 118
 # endif
 
-# ifndef W 
+# ifndef W
 #  define W 119
 # endif
 
@@ -134,15 +133,15 @@
 #  define Z 122
 # endif
 
-# ifndef ONE_NUM_PAD 
+# ifndef ONE_NUM_PAD
 #  define ONE_NUM_PAD 83
 # endif
 
-# ifndef TWO_NUM_PAD 
+# ifndef TWO_NUM_PAD
 #  define TWO_NUM_PAD 84
 # endif
 
-# ifndef THREE_NUM_PAD 
+# ifndef THREE_NUM_PAD
 #  define THREE_NUM_PAD 85
 # endif
 
@@ -150,7 +149,7 @@
 #  define FOUR_NUM_PAD 86
 # endif
 
-# ifndef FIVE_NUM_PAD 
+# ifndef FIVE_NUM_PAD
 #  define FIVE_NUM_PAD 87
 # endif
 
@@ -178,7 +177,7 @@
 #  define MORE 69
 # endif
 
-# ifndef LEFT_ARROW 
+# ifndef LEFT_ARROW
 #  define LEFT_ARROW 123
 # endif
 
@@ -186,7 +185,7 @@
 #  define RIGHT_ARROW 124
 # endif
 
-# ifndef DOWN_ARROW 
+# ifndef DOWN_ARROW
 #  define DOWN_ARROW 125
 # endif
 
@@ -194,8 +193,4 @@
 #  define UP_ARROW 126
 # endif
 
-# ifndef ARROW
-#  define ARROW 123 || 124 || 125 || 126
-# endif
-
-# endif
+#endif

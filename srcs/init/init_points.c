@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:25:41 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:35:45 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:42:26 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	__init_3d_line_struct(t_3d *grid_line, int x, int y, int z)
 {
+	if (!grid_line)
+		return ;
 	grid_line->x = x;
 	grid_line->y = y;
 	grid_line->z = z;

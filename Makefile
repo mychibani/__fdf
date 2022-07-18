@@ -6,7 +6,7 @@
 #    By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/26 10:09:52 by ychibani          #+#    #+#              #
-#    Updated: 2022/07/16 20:23:48 by ychibani         ###   ########.fr        #
+#    Updated: 2022/07/18 12:45:41 by ychibani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS_FILES		=	srcs/fdf/main.c					\
 					srcs/init/init_mlx.c 			\
 					srcs/init/init_points.c 		\
 					srcs/clean/clean_quit.c			\
+					srcs/utils/init_utils.c 		\
 					srcs/utils/mlx_utils.c			\
 					srcs/utils/mapping_utils.c		\
 					srcs/utils/line_algorithm.c		\
@@ -38,7 +39,7 @@ INCS			=	-I ./includes -I libft/includes -I mlx
 
 LIBFT			=	libft/libft.a
 
-CC			=	gcc 
+CC			=	clang
 
 CFLAGS			=  	-Wall -Werror -Wextra 
 
@@ -92,7 +93,7 @@ clean:
 
 fclean:			clean
 				@echo "Deleting ${_RED}${_BOLD}fdf${_END}..."
-				@${RM} ${OBJS_FILES}
+				@${RM} ${NAME}
 
 re:				fclean all
 

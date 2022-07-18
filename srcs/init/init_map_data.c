@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:00:57 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:26:59 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:47:24 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_map_data	*__init_map_data(int fd, char *file_name)
 	map->tot_size = map->x_size * map->y_size;
 	map->zoom = fmin(SCREEN_WIDTH / map->x_size / 1.5,
 			SCREEN_HEIGHT / map->y_size / 1.5);
-	map->scaling = 10;
+	map->scaling = SCALING;
 	if (map->x_size < 0 || map->y_size < 0)
 		return (NULL);
 	return (map);

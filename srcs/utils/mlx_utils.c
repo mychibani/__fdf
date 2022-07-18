@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 17:15:20 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:39:48 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:49:19 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	__line_mapping(t_2d **grid, t_map_data *data, t_fdf *fdf)
 	int		y;
 	t_line	line;
 
-	x = 0;
-	y = 0;
-	while (y < data->y_size)
+	x = -1;
+	y = -1;
+	while (++y < data->y_size)
 	{
-		x = 0;
-		while (x < data->x_size)
+		x = -1;
+		while (++x < data->x_size)
 		{
 			if (x != data->x_size - 1)
 			{
@@ -62,10 +62,9 @@ int	__line_mapping(t_2d **grid, t_map_data *data, t_fdf *fdf)
 			if (y != data->y_size - 1)
 			{
 				bottom_line(&line, grid, x, y);
+				__print_line_to_image(fdf, &line);
 			}
-			x++;
 		}
-		y++;
 	}
 	return (_SUCCESS_);
 }

@@ -6,7 +6,7 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 13:05:41 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/16 20:22:16 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:38:06 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 		return (-3);
 	data = (t_program_data *)malloc(sizeof(t_program_data));
 	if (!__init_program_data(data, av[1]))
-		return (printf("ERROR_MALLOC\n"), -4);
+		return (ft_putstr_fd("Malloc Error\n", 2), -4);
 	if (!__line_mapping(data->final_map, data->map_data, data->fdf))
 		return (-5);
 	if (!__put_image_to_window(data))

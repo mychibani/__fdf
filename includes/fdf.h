@@ -6,14 +6,13 @@
 /*   By: ychibani <ychibani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:09:21 by ychibani          #+#    #+#             */
-/*   Updated: 2022/07/12 13:26:56 by ychibani         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:50:50 by ychibani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
